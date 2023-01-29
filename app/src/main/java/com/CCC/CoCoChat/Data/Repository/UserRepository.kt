@@ -1,4 +1,10 @@
 package com.CCC.CoCoChat.Data.Repository
 
-class UserRepository {
+import javax.inject.Inject
+
+class UserRepository @Inject constructor(private val userDao: UserDao) {
+
+    fun insertUser(user: User) {
+        userDao.insertUser(user)
+    }
 }

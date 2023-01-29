@@ -1,3 +1,12 @@
 package com.CCC.CoCoChat.Data.Repository
 
-interface UserDao {}
+import android.content.Context
+import android.content.SharedPreferences
+
+class UserDao {
+
+
+    fun insertUser(user: User) {
+
+    }
+}
