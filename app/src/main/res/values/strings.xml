@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">COgUmA</string>
+
+<!--  LoginPage  -->
+    <string name="input_user_name">UserName</string>
+    <string name="input_user_password">UserPassword</string>
+    <string name="button_login">로그인</string>
+</resources>
