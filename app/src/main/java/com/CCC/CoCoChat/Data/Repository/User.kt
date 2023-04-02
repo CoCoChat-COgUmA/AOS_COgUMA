@@ -1,5 +1,8 @@
 package com.CCC.CoCoChat.Data.Repository
 
+import com.google.gson.annotations.SerializedName
+
 data class User(
-    val a: String
+    @SerializedName("nickname")
+    var nickname: String
 )

@@ -12,12 +12,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.CoCoChat"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".View.MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".View.SplashActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".View.LoginActivity"
             android:exported="true">
@@ -27,9 +30,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".View.ChatListActivity"
-            android:exported="false" />
         <activity
             android:name=".View.ChatRoomActivity"
             android:exported="false" />

@@ -1,8 +1,10 @@
 package com.CCC.CoCoChat
 
 import android.app.Application
+import android.content.Context
+import androidx.datastore.preferences.preferencesDataStore
+import com.CCC.CoCoChat.Data.Preference.SharedPreferences
 import com.CCC.CoCoChat.Data.Retrofit.Retrofit.init
-import com.CCC.CoCoChat.Data.SharedPreferences
 
 class App: Application() {
     companion object {

@@ -45,10 +45,12 @@
             style="@style/body_middle" />
 
         <Button
+            android:id="@+id/bt_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/button_login"
             style="@style/body_middle"
+            android:background="@drawable/button_default_background_normal"
             />
 
     </LinearLayout>

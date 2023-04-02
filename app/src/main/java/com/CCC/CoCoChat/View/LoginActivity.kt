@@ -1,19 +1,51 @@
 package com.CCC.CoCoChat.View
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import com.CCC.CoCoChat.App.Companion.pref
-import com.CCC.CoCoChat.Data.Repository.User
-import com.CCC.CoCoChat.R
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import com.CCC.CoCoChat.Data.RepositoryImpl.UserRepositoryImpl
+import com.CCC.CoCoChat.Data.Request.LoginRequest
+import com.CCC.CoCoChat.EncryptionAES.encrypt
+import com.CCC.CoCoChat.EncryptionAES.generateSecretKey
+import com.CCC.CoCoChat.Factory.LoginViewModelFactory
+import com.CCC.CoCoChat.UiState.LoginUiState
+import com.CCC.CoCoChat.ViewModel.LoginViewModel
+import com.CCC.CoCoChat.databinding.ActivityLoginBinding
+import java.util.*
 
 class LoginActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityLoginBinding
+
+    private val viewModel by viewModels<LoginViewModel> {
+        LoginViewModelFactory(UserRepositoryImpl())
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        pref.user = User("앙")
+        binding.run {
+            btLogin.setOnClickListener {
+                viewModel.login(
+                    LoginRequest(
+                        etLoginId.text.toString(),
+                        etLoginPw.text.toString()
+                    )
+                )
+            }
+        }
 
-        Log.d("여기", pref.user.toString())
+        viewModel.loginUiState.observe(this, androidx.lifecycle.Observer {
+            when (it) {
+                is LoginUiState.LoginSuccess -> {
+                    startActivity(Intent(this, MainActivity::class.java))
+                }
+                is LoginUiState.LoginFailed -> {}
+                else -> {}
+            }
+        })
     }
 }
