@@ -6,6 +6,7 @@ import com.CCC.CoCoChat.Data.Response.LoginResponse
 import com.CCC.CoCoChat.Data.Retrofit.RetrofitConst.LOGIN_PATH
 import com.CCC.CoCoChat.Data.Retrofit.RetrofitConst.SERVER_URL
 import okhttp3.OkHttpClient
+import retrofit2.Response
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.POST
@@ -29,12 +30,15 @@ object Retrofit {
                     .build()
             ).build()
 
-    fun getRetrofit(): Api = retrofit.create(Api::class.java)
+    val chetRetrofit: ChatApi = retrofit.create(ChatApi::class.java)
+    val userRetrofit: UserApi = retrofit.create(UserApi::class.java)
 
-    interface Api {
+    interface ChatApi {
+    }
+    interface UserApi {
         @POST(LOGIN_PATH)
         suspend fun login(
             @Body loginRequest: LoginRequest
-        ): LoginResponse
+        ): Response<LoginResponse>
     }
 }

@@ -5,8 +5,6 @@ import android.content.Context.MODE_PRIVATE
 import com.CCC.CoCoChat.Data.Preference.PreferenceKey.CHECK_AUTO_LOGIN
 import com.CCC.CoCoChat.Data.Preference.PreferenceKey.USER_ID
 import com.CCC.CoCoChat.Data.Preference.PreferenceKey.USER_PW
-import com.CCC.CoCoChat.Data.Repository.UserRepository
-import okhttp3.internal.cache2.Relay.Companion.edit
 
 class SharedPreferences(context: Context) {
     val pref = context.getSharedPreferences(context.packageName, MODE_PRIVATE)
